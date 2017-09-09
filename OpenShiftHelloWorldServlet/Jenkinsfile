@@ -11,7 +11,9 @@ node {
         echo 'Testing....'
     }
     stage('Deploy') {
-    	'openshiftDeploy apiURL: '', authToken: '', depCfg: 'jws-app', namespace: '', verbose: 'false', waitTime: '', waitUnit: 'sec'
-        echo 'Deploying....'
+    	steps {
+    		'openshiftDeploy apiURL: '', authToken: '', depCfg: 'jws-app', namespace: '', verbose: 'false', waitTime: ''
+        	echo 'Deploying....'
+        }
     }
 }
