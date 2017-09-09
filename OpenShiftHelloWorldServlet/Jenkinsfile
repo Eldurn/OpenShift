@@ -3,6 +3,7 @@ node {
          echo 'Building....'
          echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
          openshiftScale apiURL: '', authToken: '', depCfg: 'jws-app', namespace: '', replicaCount: '0', verbose: 'false', verifyReplicaCount: 'false', waitTime: ''
+         openshiftImageStream apiURL: '', authToken: '', name: 'jboss-webserver30-tomcat8-openshift', namespace: '', tag: 'latest'
          openshiftBuild apiURL: '', authToken: '', bldCfg: 'jws-app', buildName: '', checkForTriggeredDeployments: 'false', commitID: '', namespace: '', showBuildLogs: 'false', verbose: 'false', waitTime: ''
     }
     stage('Test') {
