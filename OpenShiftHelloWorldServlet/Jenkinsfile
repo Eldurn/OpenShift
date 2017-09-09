@@ -1,19 +1,15 @@
 node {
     stage('Build') {
-    	steps {
-	         echo 'Building....'
-	         echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-	         openshiftScale apiURL: '', authToken: '', depCfg: 'jws-app', namespace: '', replicaCount: '0', verbose: 'false', verifyReplicaCount: 'false', waitTime: ''
-	         openshiftBuild apiURL: '', authToken: '', bldCfg: 'jws-app', buildName: '', checkForTriggeredDeployments: 'false', commitID: '', namespace: '', showBuildLogs: 'false', verbose: 'false', waitTime: ''
-         }
+         echo 'Building....'
+         echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+         openshiftScale apiURL: '', authToken: '', depCfg: 'jws-app', namespace: '', replicaCount: '0', verbose: 'false', verifyReplicaCount: 'false', waitTime: ''
+         openshiftBuild apiURL: '', authToken: '', bldCfg: 'jws-app', buildName: '', checkForTriggeredDeployments: 'false', commitID: '', namespace: '', showBuildLogs: 'false', verbose: 'false', waitTime: ''
     }
     stage('Test') {
         echo 'Testing....'
     }
     stage('Deploy') {
-    	steps {
-    		openshiftDeploy apiURL: '', authToken: '', depCfg: 'jws-app', namespace: '', verbose: 'false', waitTime: ''
-        	echo 'Deploying....'
-        }
+		openshiftDeploy apiURL: '', authToken: '', depCfg: 'jws-app', namespace: '', verbose: 'false', waitTime: ''
+    	echo 'Deploying....'
     }
 }
