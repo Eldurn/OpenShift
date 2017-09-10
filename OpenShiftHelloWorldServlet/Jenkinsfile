@@ -1,4 +1,4 @@
-node() {
+node('maven') {
     stage('Build') {
          echo 'Building....'
          
@@ -6,9 +6,8 @@ node() {
     }
     stage('Test') {
         echo 'Testing....'
-        git branch: 'master', url: 'https://github.com/Eldurn/OpenShiftTests.git'
-        sh "mvn clean install"
-        sh "mvn test"
+        
+        sh "mvn -f /var/lib/jenkins/jobs/testaus-sample-pipeline/workspace /pom.xml test"
     }
     stage('Deploy') {
    	    echo 'Deploying....'
