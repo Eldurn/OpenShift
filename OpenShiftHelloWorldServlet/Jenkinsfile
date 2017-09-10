@@ -1,7 +1,6 @@
-node('maven') {
+node() {
     stage('Build') {
          echo 'Building....'
-         echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
          openshiftScale depCfg: 'jws-app', replicaCount: '0', verbose: 'false', verifyReplicaCount: 'false'
          openshiftBuild bldCfg: 'jws-app', checkForTriggeredDeployments: 'false', showBuildLogs: 'false', verbose: 'false'
     }
@@ -13,6 +12,5 @@ node('maven') {
    	    echo 'Deploying....'
 		openshiftDeploy depCfg: 'jws-app', verbose: 'false', waitTime: ''
 		openshiftScale depCfg: 'jws-app', replicaCount: '1', verbose: 'false', verifyReplicaCount: 'true'
-    	
     } 
 }
