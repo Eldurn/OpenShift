@@ -1,4 +1,4 @@
-node() {
+node('maven') {
     stage('Build') {
          echo 'Building....'
          openshiftScale depCfg: 'jws-app', replicaCount: '0', verbose: 'false', verifyReplicaCount: 'false'
