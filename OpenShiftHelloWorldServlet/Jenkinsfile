@@ -1,11 +1,13 @@
 node('maven') {
     stage('Build') {
          echo 'Building....'
+         
          openshiftScale depCfg: 'jws-app', replicaCount: '0', verbose: 'false', verifyReplicaCount: 'false'
          openshiftBuild bldCfg: 'jws-app', checkForTriggeredDeployments: 'false', showBuildLogs: 'false', verbose: 'false'
     }
     stage('Test') {
         echo 'Testing....'
+        git branch: 'master', url: 'http://gogs:3000/gogs/openshift-tasks.git'
         sh "mvn clean install"
         sh "mvn test"
     }
