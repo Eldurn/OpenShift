@@ -7,10 +7,12 @@ node {
     }
     stage('Test') {
         echo 'Testing....'
+        sh "mvn test"
     }
     stage('Deploy') {
+   	    echo 'Deploying....'
 		openshiftDeploy depCfg: 'jws-app', verbose: 'false', waitTime: ''
 		openshiftScale depCfg: 'jws-app', replicaCount: '1', verbose: 'false', verifyReplicaCount: 'true'
-    	echo 'Deploying....'
+    	
     } 
 }

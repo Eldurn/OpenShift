@@ -24,7 +24,7 @@ public class HelloWorldServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().println("Hello World Testi!");
+		response.getWriter().println("Hello World haloo!");
 	}
 
 	/**
@@ -32,5 +32,9 @@ public class HelloWorldServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+	}
+	
+	public String sayHello() {
+		return "hello";
 	}
 }
