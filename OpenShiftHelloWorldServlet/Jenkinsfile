@@ -6,7 +6,7 @@ node('maven') {
     }
     stage('Test') {
         echo 'Testing....'
-        sh "cd ../../../var/lib/jenkins"
+        sh "mvn clean install"
         sh "mvn test"
     }
     stage('Deploy') {
