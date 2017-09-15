@@ -6,7 +6,8 @@ node('maven') {
     }
     stage('Test') {
         echo 'Testing....'
-        sh "mvn test"
+        git 'https://github.com/Eldurn/OpenShiftTests.git'
+        sh "mvn -f /tmp/workspace/helloworld-sample-pipeline/OpenShiftHelloWorldServlet/pom.xml test"
     }
     stage('Deploy') {
    	    echo 'Deploying....'
