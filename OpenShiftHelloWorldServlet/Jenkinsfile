@@ -1,4 +1,4 @@
-node() {
+node('slave') {
     stage('Build') {
          echo 'Building....'
          
