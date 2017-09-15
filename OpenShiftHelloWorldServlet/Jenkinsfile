@@ -1,4 +1,4 @@
-node('slave') {
+node('maven') {
     stage('Build') {
          echo 'Building....'
          
