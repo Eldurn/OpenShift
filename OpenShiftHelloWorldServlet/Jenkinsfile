@@ -1,14 +1,16 @@
 node('maven') {
+	// define commands
+    def mvnCmd = "mvn -f /tmp/workspace/helloworld-sample-pipeline/OpenShiftHelloWorldServlet/pom.xml"
     stage('Build') {
          echo 'Building....'
          git 'https://github.com/Eldurn/OpenShiftTests.git'
-         sh "mvn clean install -DskipTests=true"
+         sh "${mvnCmd} clean install -DskipTests=true"
          
     }
     stage('Test') {
         echo 'Testing....'
         
-        sh "mvn -f /tmp/workspace/helloworld-sample-pipeline/OpenShiftHelloWorldServlet/pom.xml test"
+        sh "${mvnCmd} test"
     }
     stage('Deploy') {
    	    echo 'Deploying....'
