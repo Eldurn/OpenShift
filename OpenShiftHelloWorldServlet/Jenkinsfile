@@ -1,7 +1,8 @@
 node('maven') {
     stage('Build') {
          echo 'Building....'
-         
+         git 'https://github.com/Eldurn/OpenShiftTests.git'
+         sh "mvn clean install -DskipTests=true"
          
     }
     stage('Test') {
