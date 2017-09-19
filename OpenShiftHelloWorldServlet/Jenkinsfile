@@ -3,7 +3,7 @@ node('maven') {
     def mvnCmd = "mvn -f /tmp/workspace/helloworld-sample-pipeline/OpenShiftHelloWorldServlet/pom.xml"
     stage('Build') {
          echo 'Building....'
-         //git 'https://github.com/Eldurn/OpenShiftTests.git'
+         git 'https://github.com/Eldurn/OpenShiftTests.git'
          //sh "${mvnCmd} clean install -DskipTests=true"
          sh "${mvnCmd} compile"
          
